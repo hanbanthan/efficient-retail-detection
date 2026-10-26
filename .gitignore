@@ -1,0 +1,49 @@
+# Python bytecode & build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.installed.cfg
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Datasets (SKU-110K is academic/non-commercial — NEVER commit data)
+data/
+datasets/
+*.zip
+*.tar
+*.tar.gz
+
+# Model checkpoints & exported weights
+*.pt
+*.pth
+*.onnx
+*.engine
+checkpoints/
+weights/
+
+# Experiment logs & caches
+runs/
+wandb/
+experiments/runs/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Secrets & local environment variables (NEVER commit credentials)
+.env
+*.pem
+*.key
+*secret*
+*credentials*.json
+
+# OS / IDE files
+.DS_Store
+.vscode/
+.idea/
+EOF

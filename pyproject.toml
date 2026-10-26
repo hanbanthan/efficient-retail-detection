@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "efficient-retail-detection"
+version = "0.1.0"
+description = "Single-class dense retail object detection and counting for edge AI"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+    "numpy>=1.26.0,<2.0.0",
+    "scipy>=1.11.0",
+    "pillow>=10.0.0",
+    "opencv-python-headless>=4.8.0",
+    "matplotlib>=3.8.0",
+    "pyyaml>=6.0.1",
+    "torch>=2.2.0",
+    "torchvision>=0.17.0",
+    "torchmetrics>=1.3.0",
+    "pycocotools>=2.0.7",
+    "ultralytics>=8.3.0",
+    "onnx>=1.16.0",
+    "onnxruntime>=1.17.0",
+    "gradio>=4.20.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.3.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-v --tb=short"
