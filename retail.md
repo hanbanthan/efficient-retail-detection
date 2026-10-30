@@ -135,13 +135,13 @@ Adjust if the official selection schedule changes. These are upper-bound plannin
 ### Learn
 - [x] Review tensor dimensions `N,C,H,W`, Conv2D, padding, stride, feature maps, and receptive fields.
 - [x] Study ReLU, BatchNorm, residual/skip connections, and pooling.
-- [ ] Understand CNN backbones (ResNet and a lightweight MobileNet-style backbone).
-- [ ] Review `Dataset`, `DataLoader`, `model.train()`, `model.eval()`, `torch.no_grad()`, gradient flow, optimizer, and loss functions.
+- [x] Understand CNN backbones (ResNet and a lightweight MobileNet-style backbone).
+- [x] Review `Dataset`, `DataLoader`, `model.train()`, `model.eval()`, `torch.no_grad()`, gradient flow, optimizer, and loss functions.
 - [x] Study transfer learning: frozen feature extractor vs fine-tuning an entire model.
 
 ### Understand
-- [ ] Explain why deeper features can recognize higher-level patterns.
-- [ ] Explain how stride/downsampling affects the ability to detect **small products**.
+- [x] Explain why deeper features can recognize higher-level patterns.
+- [x] Explain how stride/downsampling affects the ability to detect **small products**.
 - [ ] Explain how a detector can reuse a pretrained classification backbone.
 - [ ] Explain training vs inference BatchNorm behavior and why `model.eval()` matters.
 - [ ] Explain overfitting, data augmentation, learning rate, batch size, and image-resolution trade-offs.
