@@ -13,7 +13,6 @@ venv/
 env/
 
 # Datasets (SKU-110K is academic/non-commercial — NEVER commit data)
-data/
 datasets/
 /SKU110K_fixed/images/
 /SKU110K_fixed/annotations/*.csv
