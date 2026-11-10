@@ -48,7 +48,9 @@ def resolve_data_yaml(data_yaml: str | Path) -> Path:
 def val_image_paths(data_yaml: str | Path) -> list[Path]:
     """Sorted (=deterministic) list of validation images from a (resolved) data.yaml."""
     cfg = yaml.safe_load(Path(data_yaml).read_text(encoding="utf-8"))
-    return sorted((Path(cfg["path"]) /cfg["val"].glob("*.jpg")))
+    val_dir = Path(cfg["path"]) / cfg["val"]
+    
+    return sorted(val_dir.glob("*.jpg"))
 
 def _version(pkg: str) -> str | None:
     try:
