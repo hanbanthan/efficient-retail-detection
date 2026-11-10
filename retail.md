@@ -142,12 +142,12 @@ Adjust if the official selection schedule changes. These are upper-bound plannin
 ### Understand
 - [x] Explain why deeper features can recognize higher-level patterns.
 - [x] Explain how stride/downsampling affects the ability to detect **small products**.
-- [ ] Explain how a detector can reuse a pretrained classification backbone.
+- [x] Explain how a detector can reuse a pretrained classification backbone.
 - [ ] Explain training vs inference BatchNorm behavior and why `model.eval()` matters.
 - [ ] Explain overfitting, data augmentation, learning rate, batch size, and image-resolution trade-offs.
 
 ### Build
-- [ ] Write `src/fundamentals/tensor_shapes.py` to print shapes through a tiny CNN.
+- [x] Write `src/fundamentals/tensor_shapes.py` to print shapes through a tiny CNN.
 - [ ] Create one simple PyTorch data-loading/training sanity example (no need to retrain a large classifier).
 - [ ] Confirm model checkpoints can be saved and reloaded reproducibly.
 
@@ -179,11 +179,11 @@ Adjust if the official selection schedule changes. These are upper-bound plannin
 - [ ] Describe how resizing and letterboxing affect bounding box coordinates.
 
 ### Build
-- [ ] Implement `xyxy ↔ xywh` conversion functions in `src/fundamentals/boxes.py`.
-- [ ] Implement IoU **from scratch** in `src/fundamentals/iou.py`.
-- [ ] Implement a simple NMS **from scratch for learning** in `src/fundamentals/nms.py` (not necessarily the production NMS).
-- [ ] Add unit tests for identical boxes, no overlap, partial overlap, invalid/degenerate boxes, score sorting, and coordinate conversion.
-- [ ] Draw boxes and scores on a sample image using Matplotlib/OpenCV.
+- [x] Implement `xyxy ↔ xywh` conversion functions in `src/fundamentals/boxes.py`.
+- [x] Implement IoU **from scratch** in `src/fundamentals/iou.py`.
+- [x] Implement a simple NMS **from scratch for learning** in `src/fundamentals/nms.py` (not necessarily the production NMS).
+- [x] Add unit tests for identical boxes, no overlap, partial overlap, invalid/degenerate boxes, score sorting, and coordinate conversion.
+- [x] Draw boxes and scores on a sample image using Matplotlib/OpenCV.
 
 **GitHub code reference [P0]:** [Ultralytics](https://github.com/ultralytics/ultralytics) — browse prediction and postprocessing concepts **after** implementing simple IoU/NMS yourself. Treat production implementations as a comparison, not a substitute for the learning exercises.
 
@@ -196,28 +196,28 @@ Adjust if the official selection schedule changes. These are upper-bound plannin
 ## Phase 3 — SKU-110K data exploration and data pipeline [P0]
 
 ### Learn
-- [ ] Read the [original dataset documentation](https://github.com/eg4000/SKU110K_CVPR19) and its academic/non-commercial-use restriction.
-- [ ] Understand SKU-110K's single-class labels and train/validation/test split.
-- [ ] Study annotation coordinates and the YOLO text annotation format.
-- [ ] Study object-density distribution and how input resolution affects tiny products.
-- [ ] Understand train/validation/test leakage and the purpose of deterministic sampling.
+- [x] Read the [original dataset documentation](https://github.com/eg4000/SKU110K_CVPR19) and its academic/non-commercial-use restriction.
+- [x] Understand SKU-110K's single-class labels and train/validation/test split.
+- [x] Study annotation coordinates and the YOLO text annotation format.
+- [x] Study object-density distribution and how input resolution affects tiny products.
+- [x] Understand train/validation/test leakage and the purpose of deterministic sampling.
 
 ### Understand
-- [ ] Explain why `SKU-110K` does **not** mean 110,000 label classes.
-- [ ] Explain why resizing images requires transforming the ground-truth boxes in the same coordinate system.
-- [ ] Explain why model tuning and quantization calibration must not use test images.
-- [ ] Explain why dense scenes can expose annotation quality issues and NMS limitations.
+- [x] Explain why `SKU-110K` does **not** mean 110,000 label classes.
+- [x] Explain why resizing images requires transforming the ground-truth boxes in the same coordinate system.
+- [x] Explain why model tuning and quantization calibration must not use test images.
+- [x] Explain why dense scenes can expose annotation quality issues and NMS limitations.
 
 ### Build
-- [ ] Assess available disk space and data-transfer limits before downloading the full ~13.6 GB dataset.
-- [ ] Obtain the dataset from an authorized official source and keep it **outside Git**.
-- [ ] Inspect examples, annotation files, split definitions, and image dimensions.
-- [ ] Create deterministic **small** training and validation subsets by sampling within the official splits; document IDs and seed.
-- [ ] Verify all boxes have valid coordinates, nonnegative areas, and one supported class ID.
-- [ ] Visualize at least 10 annotated images with varied crowding and object sizes.
-- [ ] Compute basic data statistics: objects/image, object-area distribution, image dimensions, corrupt/missing files.
-- [ ] Implement a loader/adaptor or use the Ultralytics dataset setup; validate conversion by overlaying annotations.
-- [ ] Add basic data checks and smoke tests.
+- [x] Assess available disk space and data-transfer limits before downloading the full ~13.6 GB dataset.
+- [x] Obtain the dataset from an authorized official source and keep it **outside Git**.
+- [x] Inspect examples, annotation files, split definitions, and image dimensions.
+- [x] Create deterministic **small** training and validation subsets by sampling within the official splits; document IDs and seed.
+- [x] Verify all boxes have valid coordinates, nonnegative areas, and one supported class ID.
+- [x] Visualize at least 10 annotated images with varied crowding and object sizes.
+- [x] Compute basic data statistics: objects/image, object-area distribution, image dimensions, corrupt/missing files.
+- [x] Implement a loader/adaptor or use the Ultralytics dataset setup; validate conversion by overlaying annotations.
+- [x] Add basic data checks and smoke tests.
 
 **GitHub code reference [P0]:** [SKU-110K official repo](https://github.com/eg4000/SKU110K_CVPR19) — consult the README, annotation format, official download conditions and crowded-scene examples. Its older Keras/RetinaNet environment is **not** required for this PyTorch MVP.
 
@@ -230,17 +230,17 @@ Adjust if the official selection schedule changes. These are upper-bound plannin
 ## Phase 4 — First YOLO11n training baseline [P0]
 
 ### Learn
-- [ ] Study one-stage detection conceptually: backbone, neck/multiscale features, detection head, decoding/NMS.
-- [ ] Study the YOLO11n model architecture at a level where you can describe the feature pipeline.
-- [ ] Learn transfer learning, pretrained checkpoints, model-specific augmentation, and optimizer scheduling.
-- [ ] Learn training logging: train vs validation loss/metrics, checkpointing and resuming.
+- [x] Study one-stage detection conceptually: backbone, neck/multiscale features, detection head, decoding/NMS.
+- [x] Study the YOLO11n model architecture at a level where you can describe the feature pipeline.
+- [x] Learn transfer learning, pretrained checkpoints, model-specific augmentation, and optimizer scheduling.
+- [x] Learn training logging: train vs validation loss/metrics, checkpointing and resuming.
 
 ### Understand
-- [ ] Explain what pretrained weights provide and why single-class fine-tuning is needed.
-- [ ] Explain what `imgsz`, batch size, epochs, learning rate, and data config mean.
-- [ ] Explain why no single training loss value is enough to establish detection quality.
-- [ ] Explain likely GPU memory bottlenecks, and what to do if Colab runs out of memory.
-- [ ] Explain why a shorter subset experiment is a smoke test, not a comparable benchmark to published full-dataset results.
+- [x] Explain what pretrained weights provide and why single-class fine-tuning is needed.
+- [x] Explain what `imgsz`, batch size, epochs, learning rate, and data config mean.
+- [x] Explain why no single training loss value is enough to establish detection quality.
+- [x] Explain likely GPU memory bottlenecks, and what to do if Colab runs out of memory.
+- [x] Explain why a shorter subset experiment is a smoke test, not a comparable benchmark to published full-dataset results.
 
 ### Build
 - [ ] Run **inference first** with an unmodified pretrained YOLO11n model and save sample predictions.

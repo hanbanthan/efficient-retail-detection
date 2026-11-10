@@ -15,6 +15,9 @@ env/
 # Datasets (SKU-110K is academic/non-commercial — NEVER commit data)
 data/
 datasets/
+/SKU110K_fixed/images/
+/SKU110K_fixed/annotations/*.csv
+/sku110k_subset/
 *.zip
 *.tar
 *.tar.gz
@@ -33,6 +36,8 @@ wandb/
 experiments/runs/
 .pytest_cache/
 .ruff_cache/
+.cache/
+*.cache
 .ipynb_checkpoints/
 
 # Secrets & local environment variables (NEVER commit credentials)
@@ -46,4 +51,3 @@ experiments/runs/
 .DS_Store
 .vscode/
 .idea/
-EOF

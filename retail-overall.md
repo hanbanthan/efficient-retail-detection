@@ -86,12 +86,13 @@ Verified dataset properties (documentation checked 2026-10-16):
 - **Demo:** a **local image-upload demo** (Gradio is a candidate), which draws boxes and displays the count.
 - **Tracking:** small reproducible JSON/CSV experiment records, saved configuration, and checkpoints; external experiment-tracking services are optional.
 
-### Available computing constraints
+**### Available computing constraints**
 
-- **Ubuntu desktop:** Intel UHD Graphics 770; no NVIDIA GPU detected. Good for coding, tests, and CPU inference benchmarking; not a CUDA training machine.
-- **Other Windows computer:** RTX 3050 with **4 GB VRAM** was previously reported; use only if current CUDA/PyTorch setup is confirmed, and expect small batch sizes.
-- **Google Colab:** practical training option, but sessions/storage are temporary. Save checkpoints, config, and metrics to persistent storage and support resuming training. No need to keep the user's computer powered on for a remote Colab runtime, but Colab runtimes themselves can disconnect.
-- **Hardware availability is not guaranteed.** Real Snapdragon inference is a stretch goal, not a dependency of the MVP.
+- **Windows computer:** NVIDIA GeForce RTX 3050 with **4 GB VRAM**. Main local development environment for coding, CUDA/PyTorch experiments, debugging, and small-scale GPU training. Expect VRAM limitations and use small batch sizes.
+
+- **Google Colab:** Practical option for larger training runs or experiments that exceed the local GPU's memory. Sessions and storage are temporary. Save checkpoints, configurations, and metrics to persistent storage, and support resuming training. Colab runtimes can disconnect independently of the user's local computer.
+
+- **Hardware availability:** Real Snapdragon inference is a stretch goal, not a dependency of the MVP.
 
 ## 6. Architecture of the finished system
 

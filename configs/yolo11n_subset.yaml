@@ -1,0 +1,25 @@
+# Every value that affects the result lives here and is copied into the run folder.
+model: yolo11n.pt                              # COCO-pretrained weights (downloaded automatically on first use)
+data: D:/efficient-retail-detection/sku110k_subset/data.yaml     # output of src.data.make_subset; override with --data
+project: runs/sku110k                          # where runs go; on Colab, use --project <Drive folder>
+name: yolo11n_sub400_640_s0                    # put model / subset size / image size / seed in the name
+
+train:                       # passed straight to YOLO.train(**train)
+  epochs: 50
+  patience: 20               # stop early if fitness doesn't improve for 20 epochs
+  imgsz: 640                 # baseline resolution; resolution experiments come later (Phase 10)
+  batch: 16                  # T4 is fine at 16; RTX 3050 4 GB -> use --set batch=8 (or 4)
+  seed: 0
+  deterministic: true        # deterministic algorithms where possible (GPU runs may still vary slightly)
+  max_det: 1000              # default 300 is BELOW the box count of dense SKU-110K images
+  workers: 2
+  cache: false               # 'ram' speeds up Colab if memory allows
+  fraction: 1.0              # the subset is already fixed and documented; use all of it
+  plots: true
+  val: true
+
+smoke:                       # overrides applied with --smoke: a quick check that data and shapes work
+  epochs: 1
+  fraction: 0.05             # ~20 of the 400 training images (Ultralytics takes the first N, deterministically)
+  batch: 4
+  plots: false               # also avoids a font download
