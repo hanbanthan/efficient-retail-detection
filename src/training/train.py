@@ -22,7 +22,7 @@ from src.training.common import (environment_info, load_config, parse_overrides,
 def build_train_args(cfg: dict, smoke: bool = False, overrides: dict | None = None) -> dict:
     """Merge config sections into kwargs for YOLO.train(). Pure function -> unit-testable.
     Priority: train section < smoke section < CLI overrides < data/project/name."""
-    args = dict[cfg["train"]]
+    args = dict(cfg["train"])
     name = cfg["name"] 
     if smoke: 
         args.update(cfg.get("smoke", {}))
@@ -30,7 +30,7 @@ def build_train_args(cfg: dict, smoke: bool = False, overrides: dict | None = No
     
     
     args.update(overrides or {})
-    args.update(data=str(cfg["data"]), project=str(Path(cfg["project"]).resolve()), name=name, exit_ok=False)
+    args.update(data=str(cfg["data"]), project=str(Path(cfg["project"]).resolve()), name=name, exist_ok=False)
     
     return args
 
